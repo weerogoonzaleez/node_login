@@ -1,0 +1,60 @@
+script.
+     function getUrlVars(){
+     var vars = {};
+     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+     vars[key] = value;
+     });
+     return vars;
+     }
+link(rel='stylesheet', href='/stylesheets/style.css')
+include head.jade
+
+
+div(class='form-group', id='login')
+   div(id='lbl-msg')
+      form(action='/login',method='post')
+
+            div(data-role='fieldcontain' id='divemail' class='controlgroup')
+              fieldset(data-role='controlgroup')
+               label(for='email') email 
+                  br      
+                  input(id='email',type='text',value='',placeholder='' class='form-control' name='email' required)
+                | 
+                
+             div(data-role='fieldcontain' id='divpass' class='divpass')
+              fieldset(data-role='controlgroup')
+               label(for='password') password 
+                  br      
+                  input(id='password',type='password',value='',placeholder='' class='form-control' name='password' required)
+
+             
+             div(data-role='fieldcontain', id='boton') 
+               input(type='submit',value='Sign Up',data-transition='fade', data-theme='c' class='btn btn-danger')
+             div(id='div-href')    
+               a(href='registro') o registrate
+
+
+        include footer.jade
+                   
+
+       script.
+         function doBounce(element, times, distance, speed) {
+             for(i = 0; i < times; i++) {
+                 element.animate({marginTop: '-='+distance},speed)
+                     .animate({marginTop: '+='+distance},speed);
+             }        
+         }
+       script.
+         var error = getUrlVars()['error'];
+         if(error==1){              
+               doBounce($('#login'), 3, '10px', 100); 
+               $( '#lbl-msg' ).append('<label>Email incorrecto.</label>');
+               $('#divemail').addClass('has-error has-feedback');
+
+
+            } 
+         if(error==2){              
+               doBounce($('#login'), 3, '10px', 100); 
+                 $( '#lbl-msg' ).append('<label>Password incorrecto.</label>');  
+                 $('#divpass').removeClass('divpass').addClass('has-error has-feedback');              
+            }

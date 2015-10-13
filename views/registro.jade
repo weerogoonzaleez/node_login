@@ -1,0 +1,37 @@
+link(rel='stylesheet', href='/stylesheets/style.css')
+include head.jade
+br
+br
+h1 Registrarse
+h1=h1
+div(class='form-group', id='login')
+ form(action='/registro',method='post' enctype='multipart/form-data')
+
+        div(data-role='fieldcontain')
+          fieldset(data-role='controlgroup')
+           label(for='email') email:
+           br
+           input(id='email', name='email', type='text',value='', placeholder='@' class='form-control')
+
+           div(data-role='fieldcontain')
+          fieldset(data-role='controlgroup')
+           label(for='username') username:
+           br
+           input(id='username', name='username', type='text',value='', placeholder='' class='form-control')
+
+        div#passworddiv(data-role='fieldcontain')
+          fieldset(data-role='controlgroup')
+           label(for='password') password:
+           br
+           input(id='password',name='password', type='password',value='',placeholder='' class='form-control')
+
+        div(data-role='fieldcontain')
+          fieldset(data-role='controlgroup')
+           label(for='foto') Foto:
+           br
+           input(id='foto', name='foto', type='file',value='', class='form-control')
+
+        div(data-role='fieldcontain', id='boton') 
+          input(type='submit',value='Registrar',data-transition='fade', data-theme='c' class='btn btn-danger')
+
+          include footer.jade

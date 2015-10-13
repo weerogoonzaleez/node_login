@@ -1,0 +1,47 @@
+//- index.jade
+link(rel='stylesheet', href='/stylesheets/style.css')
+doctype html
+html
+  include head.jade
+  body
+
+h1 welcome #{username} to your profile page
+
+
+
+div(class='form-group', id='login')
+
+
+ form(action='/update',method='post')
+
+        div(data-role='fieldcontain')
+          fieldset(data-role='controlgroup')
+           img(src='images/#{foto}' width='300' height='300' ).img-circle 
+
+        div(data-role='fieldcontain')
+          fieldset(data-role='controlgroup')
+           label(for='email') email:
+           br
+           input(id='email', name='email', type='text',value='#{email}', placeholder='@' class='form-control')
+
+        div(data-role='fieldcontain' hidden)
+          fieldset(data-role='controlgroup')
+           label(for='objid') objid:
+           br
+           input(id='objid', name='objid', type='text',value='#{_id}', class='form-control' )
+
+        div(data-role='fieldcontain')
+          fieldset(data-role='controlgroup')
+           label(for='username') username:
+           br
+           input(id='username', name='username', type='text',value='#{username}', placeholder='@' class='form-control')
+
+        
+
+        
+        div(data-role='fieldcontain', id='boton') 
+          input(type='submit',value='modificar',data-transition='fade', data-theme='c' class='btn btn-danger')
+
+  include footer.jade
+
+
